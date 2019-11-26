@@ -1,7 +1,7 @@
 module.exports = {
-    port: 3000,
-    database: {
-      url: 'mongodb://localhost:27017',
-      name: 'annualprojectdb',
-    },
-  };
+  port: 3000,
+  database: {
+    url: 'mongodb://localhost:27017/annualProjectDB',
+    name: 'annualprojectdb',
+  },
+};
