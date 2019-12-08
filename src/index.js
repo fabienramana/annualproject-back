@@ -1,13 +1,23 @@
-const express = require('express');
+/* eslint-disable no-console */
 const config = require('config');
-const notFound = require('../src/middleware/notFound');
-const error = require('../src/middleware/error');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
 const apiRouter = require('./services/api');
+const notFound = require('./middleware/notFound');
+const error = require('./middleware/error');
+
 
 
 const server = express();
+// Middlware Généraux
+server.set('view engine','ejs');
+server.use(helmet());
+server.use(cors());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
 
-// middleware errors
 
 server.use(apiRouter);
 
