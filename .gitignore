@@ -124,4 +124,9 @@ typings/
 
 ### Custom ###
 
+#secret key
+*.pem
+
+
 #End Of Custom
+
