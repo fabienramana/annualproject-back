@@ -13,6 +13,6 @@
 
 # any future command that fails will exit the script
 set -e
-mkdir -p ~/.ssh
+mkdir -m 777 -p ~/.ssh
 touch ~/.ssh/config
 echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
