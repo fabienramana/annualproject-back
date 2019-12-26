@@ -7,7 +7,6 @@ const notFound = require('../src/middleware/notFound');
 const error = require('../src/middleware/error');
 const apiRouter = require('./services/api');
 
-
 const server = express();
 
 // middleware errors
