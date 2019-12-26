@@ -7,9 +7,9 @@ before_script:
 stages:
   - deploy
 
-deploy:dev:
+deploy:
   stage: deploy
   script:
-    - bash deploy/deploy.sh
+    - bash ls
   only:
     - master
