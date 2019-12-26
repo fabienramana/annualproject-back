@@ -3,15 +3,13 @@
 # any future command that fails will exit the script
 set -e
 # Lets write the public key of our aws instance
-
-# ** Alternative approach
 eval $(ssh-agent -s)
 echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+
+# ** Alternative approach
+# echo -e "$PRIVATE_KEY" > /root/.ssh/id_rsa
+# chmod 600 /root/.ssh/id_rsa
 # ** End of alternative approach
-
-echo -e "$PRIVATE_KEY" > /root/.ssh/id_rsa
-chmod 600 /root/.ssh/id_rsa
-
 
 # disable the host key checking.
 ./deploy/disableHostKeyChecking.sh
@@ -37,5 +35,3 @@ do
   echo "deploying to ${server}"
   ssh ubuntu@${server} 'bash -s' < ./deploy/updateAndRestart.sh
 done
-
-
