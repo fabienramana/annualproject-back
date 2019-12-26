@@ -10,7 +10,6 @@ stages:
 deploy:
   stage: deploy
   script:
-    - ls
-    - bash ./deploy.sh
+    - bash deploy/deploy_deploy.sh
   only:
     - master
