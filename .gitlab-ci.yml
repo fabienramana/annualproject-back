@@ -1,18 +1,15 @@
-prod:
+image: node:8.9.0
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - npm install
+
+stages:
+  - deploy
+
+deploy:dev:
   stage: deploy
+  script:
+    - bash deploy/deploy.sh
   only:
     - master
-
-  before_script:
-    - mkdir -p ~/.ssh
-    - echo -e "$PROD_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tSrictHostKeyCheking no\n\n" > ~/.ssh/config'
-
-  script:
-    - bash .gitlab-deploy-prod.sh
-
-  environment:
-    name: production
-    url : https://www.annual-project.com
-    
