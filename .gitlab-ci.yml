@@ -7,7 +7,7 @@ prod:
     - mkdir -m 777 -p ~/.ssh
     - echo -e "$PROD_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tSrictHostKeyCheking no\n\n" > ~/.ssh/config'
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\t SrictHostKeyCheking no\n\n" > ~/.ssh/config'
 
   script:
     - bash .gitlab-deploy-prod.sh

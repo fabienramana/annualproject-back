@@ -10,7 +10,6 @@ function badRequest(err, req, res, next) {
   return next(err);
 }
 
-// eslint-disable-next-line no-unused-vars
 function sendError(err, req, res, next) {
   res.status(err.status || 500).json(errToJson(err));
 }
