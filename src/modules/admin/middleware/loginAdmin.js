@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const findOneByEmail = require('../services/findOneByEmail');
+const findOneByEmail = require('../service/findOneByEmail');
 
 module.exports = (req, res, next) => {
   findOneByEmail(req.body.mail)
@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
           jwt.sign({ user }, 'secretKey', { expiresIn: '1440m' }, (errJWT, token) => {
             res.json({
               token,
-              isAdmin: false,
+              isAdmin: true,
             });
           });
         } else if (res2 === false) {
