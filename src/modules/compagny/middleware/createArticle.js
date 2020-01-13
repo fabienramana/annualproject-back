@@ -6,8 +6,9 @@ module.exports = (req, res, next) => {
   const { description } = req.body;
   const { price } = req.body;
   const { siteId } = req.body;
+  const { imagePath } = req.body;
 
-  createArticle(name, description, price, siteId)
+  createArticle(name, description, price, siteId, imagePath)
     .then((message) => {
       res.json({
         message,

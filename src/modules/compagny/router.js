@@ -1,4 +1,5 @@
 const { Router } = require('express');
+
 const createCompany = require('./middleware/createCompany');
 const loginCompany = require('./middleware/loginCompany');
 const createArticle = require('./middleware/createArticle');

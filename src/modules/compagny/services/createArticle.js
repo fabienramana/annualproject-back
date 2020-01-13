@@ -1,7 +1,7 @@
 const connect = require('../../../client/mongodb');
 const collections = require('../../../enums/collections');
 
-module.exports = (name, description, price, siteId) => {
+module.exports = (name, description, price, siteId, imagePath) => {
   return connect()
     .then(db => db.collection(collections.ARTICLE))
     .then(collection => collection.insertOne({
@@ -9,6 +9,7 @@ module.exports = (name, description, price, siteId) => {
       description,
       price,
       siteId,
+      imagePath,
     }))
     .then((dbResponse) => {
       if (dbResponse) {
