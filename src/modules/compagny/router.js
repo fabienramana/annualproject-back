@@ -1,6 +1,7 @@
 const { Router } = require('express');
 
 const createCompany = require('./middleware/createCompany');
+const getCompanyById = require('./middleware/getCompanyById');
 const updateCompany = require('./middleware/updateCompany');
 const loginCompany = require('./middleware/loginCompany');
 const createArticle = require('./middleware/createArticle');
@@ -23,7 +24,8 @@ router.route('/create-article')
   .post(createArticle);
 
 router.route('/company/:id')
-  .post(updateCompany);
+  .get(getCompanyById)
+  .put(updateCompany);
 
 router.route('/site/:siteId/articles')
   .get(getArticlesBySiteId);
