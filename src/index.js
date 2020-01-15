@@ -9,7 +9,7 @@ const notFound = require('../src/middleware/notFound');
 const error = require('../src/middleware/error');
 const apiRouter = require('./services/api');
 
-const URL = 'http://localhost:3000/';
+const URL = 'https://annualproject-back.herokuapp.com/';
 
 const server = express();
 
