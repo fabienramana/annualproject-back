@@ -7,11 +7,11 @@ module.exports = (req, res, next) => {
   const { password } = req.body;
 
   createAdmin(mail, password)
-    .then((user) => {
+    .then((user) => { // eslint-disable-next-line
+      user.isAdmin = true;
       jwt.sign({ user }, 'secretKey', { expiresIn: '1440m' }, (errJWT, token) => {
         res.json({
           token,
-          isAdmin: true,
         });
       });
     })
