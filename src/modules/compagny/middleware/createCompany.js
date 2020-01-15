@@ -11,11 +11,11 @@ module.exports = (req, res, next) => {
   const { sirenValue } = req.body;
 
   createCompany(mail, sirenValue, countryValue, addressValue, activityValue, password)
-    .then((user) => {
+    .then((user) => { // eslint-disable-next-line
+      user.isAdmin = false;
       jwt.sign({ user }, 'secretKey', { expiresIn: '1440m' }, (errJWT, token) => {
         res.json({
           token,
-          isAdmin: false,
         });
       });
     })

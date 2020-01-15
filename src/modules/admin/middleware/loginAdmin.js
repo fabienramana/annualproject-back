@@ -4,13 +4,13 @@ const findOneByEmail = require('../service/findOneByEmail');
 
 module.exports = (req, res, next) => {
   findOneByEmail(req.body.mail)
-    .then((user) => {
+    .then((user) => { // eslint-disable-next-line
+      user.isAdmin = true;
       bcrypt.compare(req.body.password, user.password, (err, res2) => {
         if (res2 === true) {
           jwt.sign({ user }, 'secretKey', { expiresIn: '1440m' }, (errJWT, token) => {
             res.json({
               token,
-              isAdmin: true,
             });
           });
         } else if (res2 === false) {
